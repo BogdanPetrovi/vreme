@@ -7,10 +7,9 @@ const app = express();
 const port = process.env.SERVER_PORT || 5000;
 
 app.use(cors({
-  origin: ["https://vreme-orcin.vercel.app"],
+  origin: "https://vreme-orcin.vercel.app",
   methods: ["GET"],
-  optionsSuccessStatus: 200
-}))
+}));
 
 app.get('/senzor1', async (req, res) => {
   try {
