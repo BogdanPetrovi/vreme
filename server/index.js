@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.SERVER_PORT || 5000;
 
 app.use(cors({
-  origin:'http://localhost:3000',
+  origin:'https://vreme-orcin.vercel.app/',
   optionsSuccessStatus: 200
 }))
 
