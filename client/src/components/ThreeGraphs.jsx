@@ -14,7 +14,7 @@ function ThreeGraphs() {
   useEffect(() => {
     const senzor1 = async () => {
       try {
-        const { data } = await api.get('/senzor1')
+        const { data } = await api.get('/')
         setTemperatura([])
         setVlaznost([])
         setBuka([])
