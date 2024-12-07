@@ -6,10 +6,10 @@ import cors from 'cors';
 const app = express();
 const port = process.env.SERVER_PORT || 5000;
 
-app.use(cors({
-  origin: "*",
-  methods: ["GET"],
-}));
+ app.use(cors({
+   origin: ["https://vreme-orcin.vercel.app"],
+   methods: ["POST", "GET"],
+ }));
 
 app.get('/', async (req, res) => {
   try {
