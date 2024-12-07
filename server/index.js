@@ -11,7 +11,7 @@ const port = process.env.SERVER_PORT || 5000;
    methods: ["POST", "GET"],
  }));
 
-app.get('/', async (req, res) => {
+app.get('/senzor1', async (req, res) => {
   try {
     const [rows] = await db.query('SELECT * FROM senzor1;')
     res.status(200).json(rows);
