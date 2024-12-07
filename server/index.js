@@ -11,7 +11,7 @@ app.use(cors({
   methods: ["GET"],
 }));
 
-app.get('/senzor1', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const [rows] = await db.query('SELECT * FROM senzor1;')
     res.status(200).json(rows);
