@@ -4,7 +4,7 @@ import 'dotenv/config'
 import cors from 'cors';
 
 const app = express();
-const port = process.env.SERVER_PORT || 5000;
+const port = process.env.PORT || 5000;
 
  app.use(cors({
    origin: ["https://vreme-orcin.vercel.app"],
