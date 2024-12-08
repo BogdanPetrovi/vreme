@@ -1,13 +1,12 @@
 import React from 'react'
-import ThreeGraphs from './components/ThreeGraphs'
-// import SecondWay from './components/SecondWay'
 import './index.css'
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router'
 
-export default function App() {
-  
+export default function App() {  
   return (
-    <div className='box'>
-      <ThreeGraphs />
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   )
 }

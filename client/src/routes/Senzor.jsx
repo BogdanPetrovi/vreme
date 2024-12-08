@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import api from '../api/api.js'
+import { useParams } from 'react-router-dom'
 import moment from 'moment'
-import Graph from './Graph.jsx'
-import Tabela from './Tabela.jsx'
+import Graph from '../components/Graph.jsx'
+import Tabela from '../components/Tabela.jsx'
+import { Box } from '@mui/material'
+import CircularProgress from '@mui/material/CircularProgress'
 
-function ThreeGraphs() {
+function Senzor() {
   const [temperatura, setTemperatura] = useState([])
   const [vlaznost, setVlaznost] = useState([])
   const [buka, setBuka] = useState([])
   const [vreme, setVreme] = useState([])
   const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
 
   useEffect(() => {
     const senzor1 = async () => {
       try {
-        const { data } = await api.get('/senzor1')
+        const { data } = await api.get(`/senzor/${id}`)
         setTemperatura([])
         setVlaznost([])
         setBuka([])
@@ -35,16 +40,26 @@ function ThreeGraphs() {
         })
       } catch (err) {
         console.log(err)
+      } finally {
+        setLoading(false)
       }
     }
     senzor1();
-  }, [])
+  }, [id])
+
+  if(loading) return (
+    <div className="box">
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress color='inherit' size='4rem' />
+      </Box>
+    </div>
+  );
 
   return (
     <div className='page'>
-      <div className='card'>
+      <div className='graphs'>
         <div>
-          <h2>Temperatura</h2>
+          <h2 className='naslov'>Temperatura</h2>
           <Graph 
           vreme={vreme.slice(-6)}
           data={temperatura.slice(-6)}
@@ -53,7 +68,7 @@ function ThreeGraphs() {
           />
         </div>
         <div>
-          <h2>Vlaznost vazduha</h2>
+          <h2 className='naslov'>Vlaznost vazduha</h2>
           <Graph 
           vreme={vreme.slice(-6)}
           data={vlaznost.slice(-6)}
@@ -62,7 +77,7 @@ function ThreeGraphs() {
           />
         </div>
         <div>
-          <h2>Buka</h2>
+          <h2 className='naslov'>Buka</h2>
           <Graph 
             vreme={vreme.slice(-6)}
             data={buka.slice(-6)}
@@ -76,4 +91,4 @@ function ThreeGraphs() {
   )
 }
 
-export default ThreeGraphs
+export default Senzor

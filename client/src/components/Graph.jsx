@@ -24,8 +24,8 @@ function Graph(props) {
               valueFormatter: (value) => `${value}${props.symbol}`,
             },
           ]}
-          width={500}
-          height={400}
+          width={450}
+          height={350}
         />
   )
 }

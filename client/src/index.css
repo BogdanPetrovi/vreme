@@ -7,6 +7,11 @@ body {
   background-color: #F5F5DC;
 }
 
+.page {
+  min-height: 100vh;
+  overflow-y: hidden;
+}
+
 .box {
   display: flex;
   flex-direction: column;
@@ -14,12 +19,36 @@ body {
   align-items: center;
   gap:30px;
   width: 100vw;
+  height: 100vh;
   min-height: 100vh;
 }
 
+.box-home {
+  flex-direction: row;
+}
+
 .card {
+  height: 30%;
+  width: 20%;
+  backdrop-filter: blur(20px);
+  box-shadow: 0px 0px 40px 13px rgba(0,0,0,0.1);
+  cursor: pointer;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  font-size: x-large;
+  transition-duration: 700ms;
+}
+
+.card:hover {
+  transform: translateY(-2rem);
+}
+
+.graphs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .page {
@@ -27,4 +56,61 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-timing-function:cubic-bezier(0.22, 0.61, 0.36, 1);
+  animation-duration: 800ms;
+}
+
+a:link {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+a:visited {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 1500px) {
+  .page {
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 850px) {
+  .naslov {
+    margin-left: 50px;
+  }
+  svg {
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 790px) {
+  .box {
+    flex-direction: column;
+  }
+  .card {
+    width: 50%;
+    height: 25%;
+  }
+  .card:hover {
+    transform: translateY(-1rem);
+  }
+}
+
+@media (max-width: 500px) {
+  .card {
+    width: 80%;
+  }
 }
